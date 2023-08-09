@@ -1,0 +1,61 @@
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+body{
+  width: 300px;
+  margin: 0 auto;
+  background-color:rgb(0, 183, 211);
+  text-decoration: solid;
+}
+ /* CSS styles for the navigation bar */
+ /* nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin-right: 20px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  } */
+

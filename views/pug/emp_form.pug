@@ -1,0 +1,30 @@
+  doctype html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='/css/employee.css')
+    title Document
+  form.row.g-3(name="employeeform" method="POST" action="/api/regemployee")
+    .col-md-6
+      label.form-label(for='firstname') First name
+      input#firstname.form-control(type='text' name='firstname')
+    .col-md-6
+      label.form-label(for='lastname') Last name
+      input#lastname.form-control(type='text' name='lastname')
+    .col-12
+      label.form-label(for='age') Age
+      input#age.form-control(type='text' name='age')
+    .col-12 
+      label.form-label(for='gender') Gender
+      input#gender.form-control(type='text' name='gender')  
+    .col-12
+      label.form-label(for='email') Email
+      input#email.form-control(type='email' name='email')
+    .col-md-6
+      label.form-label(for='telephone') Telephone 
+      input#telephone.form-control(type='telephone' name='telephone')
+    .col-12
+      button.btn.btn-primary(type='submit') Sign in
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js')
+  script(src='../public/js/employee .js')

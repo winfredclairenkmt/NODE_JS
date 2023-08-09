@@ -1,0 +1,54 @@
+doctype html 
+html(lang="en")
+    head 
+        title Hello world 
+        link(rel="stylesheet" href="/css/style.css")
+    body
+        h1 How are you?
+        .remark 
+           p How Pug works
+        #Home.services
+        ol#shopping.groceries 
+            li Mangoes 
+            li Orange 
+            li Grape 
+            li Jackfruit
+        div 
+            p 
+                a(href="www.google.com") Google 
+            img#consumption.cars(src="http://", alt="", width="", height="")
+        form(action="post" name="signUp")  
+            label(for="email") Email 
+            input#email(type="text", name="email" value="kizzaeverdeen@gmail.com")
+
+            label(for="username") Username
+            input#text(type="text", name="username")
+            
+            label(for="password") Password
+            input#password(type="password", name="password")
+        p 
+            | name 
+            | address
+            //to put a break in pug, we use the pipe sign(|)
+
+        - const pi = 3.14
+        // this called unbuffered code; this is the ability to use certain expressions without themshowing up in your pages/code
+        //it is indicated by the minuus sign(-) function
+
+        p
+            ="2 to the power of 10 is:" + 2**10
+            //this is buffered code and it is indicated by the equal sign(=) function
+            //it appears on the page and does its work
+
+        - let name = "Scrum mistress Nakamatte Winfred Claire meet your developers,"
+        p Hello #{name}
+        //this is string concatination and it is indicated by # followed by {}
+
+        -const employees = ["Angella", "John", "Doe", "Simon", "Peterson","Judas"]
+        ul 
+            if employees.length
+                each employee in employees 
+                    li=employee 
+            else
+             p no employees registered   
+        script(src="js/validate.js")     

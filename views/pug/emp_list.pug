@@ -1,0 +1,39 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Document
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9' crossorigin='anonymous')
+
+h1 | The sum of all employee ages is : #{empAges}  
+h1 | The number of male employees is : #{genderCount.count}
+table.table
+  thead.table-dark
+    tr
+      th(scope='col') Firstname
+      th(scope='col') Lastname
+      th(scope='col') Age
+      th(scope='col') Gender
+      th(scope='col') Email 
+      th(scope="col") Telephone
+      th(scope="col") Delete
+        
+  tbody
+  if employees.length 
+    each employee in employees
+      tr
+        td #{employee.firstname}
+        td #{employee.lastname}
+        td #{employee.age}
+        td #{employee.email}
+        td #{employee.telephone}
+        td 
+          form(action="/api/employee/delete" method="POST")
+            input(type="hidden" name="id" value= employee._id)
+            button.btn.btn-danger(type="submit" onclick="confirmDelete('Are you sure?')") Delete
+        td 
+          a.btn.btn-warning(href=`/api/employee/edit/${employee._id}`) Edit
+          //- a(href="/api/employee/edit/"+employee._id) Edit by string concatination
+
+  else 
+    p There are no employees in the database.      
