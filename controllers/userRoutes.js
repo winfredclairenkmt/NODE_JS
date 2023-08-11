@@ -22,7 +22,7 @@ router.post("/register", async (req, res) => {
 });
 
 //get route for our login page
-router.get("/login", ensureLoggedIn('/api/login.pug'),(req, res) => {
+router.get("/login", (req, res) => {
     res.render("./pug/login.pug");
 });
 
@@ -31,10 +31,28 @@ router.post("/login", passport.authenticate("local",
 (req, res)=> {
     req.session.user = req.user
   let  loggedInUser = req.session.user.firstname;
-console.log("logged  in user: " );
-  res.redirect("/api/dashboard", {loggedInUser});
+console.log(loggedInUser );
+
+
+if(req.session.user.role === "director"){
+    res.render("./pug/directorDash.pug");
 }
-)
+if(req.session.user.role === "manager"){
+    res.render("./pug/managerDash.pug");
+}
+if(req.session.user.role === "salesagent"){
+    res.render("./pug/salesDash.pug");
+}
 
+ res.redirect("/api/dashboard", {loggedInUser});
+});
 
+//get route for our logout
+router.get("/logout", (req, res) => {
+    req.session.destroy(
+        () => {
+            res.redirect("/api/login");
+        }
+    );
+})
 module.exports = router;

@@ -1,6 +1,7 @@
 const express = require("express");
 const Employee = require("../models/employeeModel");
 const router = express.Router();
+const ensureLoggedIn = require("connect-ensure-login");
 
 //route for getting the form
 router.get("/employeeform", (req, res) => {
@@ -76,10 +77,16 @@ router.get("/employee/edit/:id",async (req,res)=>{
 });
 
 //post route for newly edited data
-router.post("/employee/edit",async (req,res)=>{
+router.post("/employee/edit", ensureLoggedIn("/api/login"), async (req,res)=>{
     try{
+        req.session.user = req.user;
+        if(req.session.user.role === "director" || req.session.user.role === "manager" ){
         await Employee.findOneAndUpdate({_id: req.query.id}, req.body);
         res.redirect("/api/emplist");
+        }
+        else{
+            res.render("./pug/landing.pug", {alert:"You are not authorized to access this page."});
+        }
     }
     catch(error){
         console.log(error);
